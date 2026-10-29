@@ -1,0 +1,28 @@
+{
+  "projectnaam": "TUe Campus",
+  "coordinatenstelsel": "RD",
+
+  "planlocatie": [155900, 385900],
+
+  "domein": {
+    "type": "rechthoek",
+    "middelpunt": [155900, 385900],
+    "breedte_m": 3000,
+    "hoogte_m": 2000,
+    "rotatie_graden": 5
+  },
+
+  "aantal_richtingen": 12,
+
+  "uitvoerniveau": 1,
+
+  "plot_opties": {
+    "domein": {
+      "toon_richtingspunten": true
+    },
+    "ruwheid": {
+      "toon_sectorlabels": true,
+      "toon_sectoren": true
+    }
+  }
+}

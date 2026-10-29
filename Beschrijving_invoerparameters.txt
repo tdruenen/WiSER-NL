@@ -1,0 +1,390 @@
+# =============================================================================
+#      _       ___     _____ ______ _____        _   _ _
+#     | |     / (_)   / ____|  ____|  __ \      | \ | | |
+#     | | /| / / _   | (___ | |__  | |__) | ___ |  \| | |
+#     | |/ |/ / | |   \___ \|  __| |  _  / |___|| . ` | |
+#    _|__/|__/__|_|_______) | |____| | \ \      | |\  | |__
+#   |______________________/|______|_|  \_\     |_| \_|____|
+#
+# Copyright (c) 2026 Eindhoven University of Technology
+#
+# Auteur: Thijs van Druenen
+# Versie: 1.0
+#
+# Voor informatie over licentie, aansprakelijkheid, disclaimer en
+# gebruiksvoorwaarden wordt verwezen naar:
+# LICENSE
+# DISCLAIMER.md
+# =============================================================================
+
+BESCHRIJVING INVOERPARAMETERS
+============================
+
+projectnaam
+------------
+Naam van het project.
+
+Deze naam wordt gebruikt voor het genereren van uitvoerbestanden en archieven.
+
+Voorbeeld:
+
+    "projectnaam": "TU Eindhoven"
+	
+Omdat de projectnaam wordt gebruikt als onderdeel van de naam van
+het uiteindelijke ZIP-archief, mogen geen tekens worden gebruikt die
+ongeldig zijn in bestandsnamen.
+
+Niet toegestaan:
+
+    \ / : * ? " < > |
+
+coordinatenstelsel
+------------------
+Coördinatenstelsel dat wordt gebruikt voor alle coördinaten in
+planlocatie en domein.middelpunt.
+
+Toegestane waarden:
+
+- WGS84
+- GCS
+- RD
+- EPSG:28992
+
+Coördinatenconventies:
+
+WGS84 / GCS:
+
+    [breedtegraad, lengtegraad]
+
+RD / EPSG:28992:
+
+    [x, y]
+
+Voorbeelden:
+
+    "coordinatenstelsel": "WGS84"
+    "coordinatenstelsel": "EPSG:28992"
+
+
+planlocatie
+-----------
+Locatie van het project of plan.
+
+WGS84 / GCS:
+
+    "planlocatie": [52.12345, 5.12345]
+
+waarbij:
+
+    [breedtegraad, lengtegraad]
+
+RD / EPSG:28992:
+
+    "planlocatie": [155000, 463000]
+
+waarbij:
+
+    [x, y]
+
+in meters volgens het Rijksdriehoeksstelsel.
+
+
+domein
+------
+
+Definieert het gebied waarvoor de windstatistiek en de effectieve
+ruwheidslengte worden bepaald.
+
+Het domein dient overeen te komen met de buitenrand van het gebied
+waarvoor in het CFD-model of windtunnelmodel de meteorologische
+randvoorwaarden worden opgelegd.
+
+Conform NEN 8100:2027 kan deze begrenzing afhankelijk zijn van de 
+gekozenmodellering van de bufferzone:
+
+- Indien de bufferzone wordt gemodelleerd met één constante
+  ruwheidslengte die representatief is voor het stroomopwaartse
+  voorland (NEN 8100, optie 2), dient het domein overeen te komen
+  met de buitenrand van de randzone.
+
+- Indien de bufferzone expliciet wordt gemodelleerd door middel van
+  verschillende lokale ruwheidszones (NEN 8100, optie 1), dient het
+  domein overeen te komen met de buitenrand van de bufferzone.
+
+De windstatistiek wordt vervolgens bepaald op de rand van dit domein.
+Hiermee wordt voorkomen dat de invloed van terreinruwheid zowel in de
+afgeleide windstatistiek als opnieuw in het CFD- of windtunnelmodel
+wordt meegenomen.
+
+
+type
+----
+Ondersteunde waarden:
+
+    "cirkel"
+    "rechthoek"
+
+
+middelpunt
+----------
+Middelpunt van het gemodelleerde domein.
+
+Moet worden opgegeven in hetzelfde coördinatenstelsel als opgegeven bij
+coordinatenstelsel.
+
+Opmerking:
+Het middelpunt van het domein hoeft niet samen te vallen met de
+planlocatie. Hierdoor kan het domein worden afgestemd op de geometrie
+van het CFD- of windtunnelmodel.
+
+Voorbeelden:
+
+    "middelpunt": [52.12345, 5.12345]
+    "middelpunt": [155000, 463000]
+
+
+CIRKELVORMIG DOMEIN
+===================
+
+straal_m
+---------
+Straal van het domein in meters.
+
+Voorbeeld:
+
+{
+  "type": "cirkel",
+  "middelpunt": [52.12345, 5.12345],
+  "straal_m": 500
+}
+
+
+RECHTHOEKIG DOMEIN
+==================
+
+breedte_m
+---------
+Breedte van de rechthoek in meters.
+
+Bij een niet-geroteerde rechthoek (rotatie_graden = 0) loopt de breedte:
+
+    West <-> Oost
+
+
+hoogte_m
+--------
+Hoogte van de rechthoek in meters.
+
+Bij een niet-geroteerde rechthoek (rotatie_graden = 0) loopt de hoogte:
+
+    Zuid <-> Noord
+
+
+rotatie_graden
+--------------
+Rotatie van de rechthoek in graden.
+
+Positieve waarden draaien met de klok mee.
+
+Voorbeelden:
+
+    0°  = Breedte west-oost, hoogte zuid-noord
+    45° = Rechthoek 45° met de klok mee gedraaid
+    90° = Breedte noord-zuid, hoogte west-oost
+
+Voorbeeld:
+
+{
+  "type": "rechthoek",
+  "middelpunt": [52.12345, 5.12345],
+  "breedte_m": 200,
+  "hoogte_m": 100,
+  "rotatie_graden": 30
+}
+
+
+aantal_richtingen
+-----------------
+Aantal richtingen waarvoor windstatistieken worden bepaald langs de
+rand van het domein.
+
+Toegestaan bereik:
+
+    2 <= aantal_richtingen <= 360
+
+Gebruikelijke waarden:
+
+    12 = elke 30°
+    16 = elke 22,5°
+    36 = elke 10°
+    72 = elke 5°
+
+Voorbeeld:
+
+    "aantal_richtingen": 12
+
+uitvoerniveau
+-------------
+Bepaalt het detailniveau van de bestanden die worden opgenomen in
+het eindarchief.
+
+Toegestane waarden:
+
+    1 = Basisuitvoer
+    2 = Uitgebreide uitvoer
+    3 = Technische uitvoer
+
+Niveau 1 (Basisuitvoer)
+-----------------------
+Bevat:
+
+- windstatistieken (*.csv)
+- ruwheidslengte_eff.csv
+- grondgebruikkaart.png
+- ruwheidskaart.png
+- invoer_parameters.json
+- samenvatting.json
+- logbestand
+
+Niveau 2 (Uitgebreide uitvoer)
+------------------------------
+Niveau 1 plus:
+
+- windstatistieken (*.json)
+
+Niveau 3 (Technische uitvoer)
+-----------------------------
+Niveau 2 plus:
+
+- richtingspunten_windstatistiek.csv
+- richtingspunten_windstatistiek_sectorgrenzen.csv
+- ruwheidslengte_eff_sectorgegevens.csv
+
+Standaardwaarde:
+
+    "uitvoerniveau": 1
+
+Voorbeeld:
+
+    "uitvoerniveau": 3
+
+plot_opties
+-----------
+Optionele instellingen voor de gegenereerde figuren.
+
+Wanneer plot_opties niet wordt opgegeven, worden alle elementen standaard
+weergegeven.
+
+
+domein
+------
+Instellingen voor grondgebruikkaart.png.
+
+
+toon_richtingspunten
+--------------------
+Toon of verberg de richtingspunten op de rand van het domein.
+
+Waarden:
+
+    true  = richtingspunten weergeven
+    false = richtingspunten verbergen
+
+Voorbeeld:
+
+{
+  "domein": {
+    "toon_richtingspunten": true
+  }
+}
+
+
+ruwheid
+-------
+Instellingen voor ruwheidskaart.png.
+
+
+toon_sectorlabels
+-----------------
+Toon of verberg de ruwheidslabels (z0) per sector.
+
+Waarden:
+
+    true  = labels weergeven
+    false = labels verbergen
+
+
+toon_sectoren
+-------------
+Toon of verberg de sectorgrenzen.
+
+Waarden:
+
+    true  = sectorgrenzen weergeven
+    false = sectorgrenzen verbergen
+
+Voorbeeld:
+
+{
+  "ruwheid": {
+    "toon_sectorlabels": true,
+    "toon_sectoren": true
+  }
+}
+
+
+PARAMETEROVERZICHT
+==================
+
+projectnaam                                     Verplicht   Naam van het project
+coordinatenstelsel                              Verplicht   Coördinatenstelsel
+planlocatie                                     Verplicht   Locatie van het plan
+domein                                          Verplicht   Definitie van het domein
+domein.type                                     Verplicht   cirkel of rechthoek
+domein.middelpunt                               Verplicht   Middelpunt van het domein
+domein.straal_m                                 Cirkel      Straal in meters
+domein.breedte_m                                Rechthoek   Breedte in meters
+domein.hoogte_m                                 Rechthoek   Hoogte in meters
+domein.rotatie_graden                           Rechthoek   Rotatiehoek in graden
+aantal_richtingen                               Optioneel   Aantal richtingen (standaard 12)
+uitvoerniveau                                   Optioneel   Detailniveau uitvoer (standaard 1)
+
+plot_opties                                     Optioneel   Plotinstellingen
+plot_opties.domein                              Optioneel   Instellingen voor domeinfiguur
+plot_opties.domein.toon_richtingspunten         Optioneel   Richtingspunten weergeven
+plot_opties.ruwheid                             Optioneel   Instellingen voor ruwheidsfiguur
+plot_opties.ruwheid.toon_sectorlabels           Optioneel   Ruwheidslabels weergeven
+plot_opties.ruwheid.toon_sectoren               Optioneel   Sectorgrenzen weergeven
+
+
+VOLLEDIG VOORBEELD
+==================
+
+{
+  "projectnaam": "TUe Campus",
+  "coordinatenstelsel": "RD",
+
+  "planlocatie": [155900, 385900],
+
+  "domein": {
+    "type": "rechthoek",
+    "middelpunt": [155900, 385900],
+    "breedte_m": 3000,
+    "hoogte_m": 2000,
+    "rotatie_graden": 0
+  },
+
+  "aantal_richtingen": 12,
+
+  "uitvoerniveau": 1,
+
+  "plot_opties": {
+    "domein": {
+      "toon_richtingspunten": true
+    },
+    "ruwheid": {
+      "toon_sectorlabels": true,
+      "toon_sectoren": true
+    }
+  }
+}
