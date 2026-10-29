@@ -1,0 +1,9 @@
+numpy
+pandas
+matplotlib
+shapely
+pyproj
+rasterio
+xarray
+netCDF4
+pyarrow
