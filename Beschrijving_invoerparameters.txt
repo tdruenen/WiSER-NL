@@ -364,12 +364,12 @@ VOLLEDIG VOORBEELD
   "projectnaam": "TUe Campus",
   "coordinatenstelsel": "RD",
 
-  "planlocatie": [155900, 385900],
+  "planlocatie": [162168, 384433],
 
   "domein": {
     "type": "rechthoek",
-    "middelpunt": [155900, 385900],
-    "breedte_m": 3000,
+    "middelpunt": [162168, 384433],
+    "breedte_m": 2000,
     "hoogte_m": 2000,
     "rotatie_graden": 0
   },
