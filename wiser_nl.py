@@ -78,11 +78,6 @@ print(r'''
 
  Auteur: Thijs van Druenen
  Versie: 1.0
-
- Voor informatie over licentie, aansprakelijkheid, disclaimer en
- gebruiksvoorwaarden wordt verwezen naar:
- LICENSE
- DISCLAIMER.md
 =============================================================================
 ''')
 
