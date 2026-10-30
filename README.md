@@ -167,7 +167,7 @@ The implemented methodology follows the procedures described in NPR 6097:2027, w
 # Repository Structure
 
 ```text
-WiSER-NL/
+WiSER-NL-main/
 │
 ├── CITATION.cff 
 ├── DISCLAIMER.md 
