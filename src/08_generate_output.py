@@ -417,7 +417,7 @@ rename_map = {
         
 
     "debug_plot":
-        "grondgebruikkaart",
+        "grondgebruikskaart",
 
     "run_log":
         "log",
