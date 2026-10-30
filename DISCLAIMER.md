@@ -89,6 +89,6 @@ If WiSER-NL is used in scientific, engineering, consultancy, or regulatory work,
 
 ## Copyright
 
-Copyright © Eindhoven University of Technology (TU/e) and the respective contributors.
+Copyright © Eindhoven University of Technology (Technische Universiteit Eindhoven).
 
 All rights reserved unless otherwise specified in the accompanying LICENSE file.
