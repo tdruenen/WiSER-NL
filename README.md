@@ -33,6 +33,10 @@ The reference version associated with the NPR is:
 
 **WiSER-NL v1.0**
 
+https://doi.org/10.5281/zenodo.23808555
+
+This archived release should be used for reproducible calculations performed in accordance with NPR 6097:2027.
+
 For reproducible calculations, always use:
 
 - the corresponding software release;
@@ -203,6 +207,7 @@ If WiSER-NL is used in a report, scientific publication, thesis, consultancy stu
 Van Druenen, T. (2026).
 WiSER-NL (Version 1.0) [Computer software].
 Zenodo.
+https://doi.org/10.5281/zenodo.23808555 
 ```
 
 ## Dataset
