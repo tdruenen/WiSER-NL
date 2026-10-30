@@ -1,22 +1,27 @@
 cff-version: 1.2.0
-title: WiSER-NL
+
+title: "WiSER-NL"
+
 message: "If you use this software, please cite it as below."
+
 type: software
+
 authors:
   - given-names: Thijs
     name-particle: van
     family-names: Druenen
-    affiliation: >-
-      Department of the Built Environment, Eindhoven
-      University of Technology
-    orcid: 'https://orcid.org/0000-0002-4376-4356'
-repository-code: 'https://github.com/tdruenen/WiSER-NL'
-abstract: >-
+    affiliation: Eindhoven University of Technology
+    orcid: https://orcid.org/0000-0002-4376-4356
+
+repository-code: https://github.com/tdruenen/WiSER-NL
+
+abstract: >
   WiSER-NL supports the determination of wind statistics and
-  effective roughness lengths for wind climate assessments
-  in accordance with NEN 8100:2027 and was developed at
+  effective roughness lengths for wind climate assessments in
+  accordance with NEN 8100:2027. The software was developed at
   Eindhoven University of Technology as part of the NEN 8100
-  revision working group. 
+  revision working group.
+
 keywords:
   - wind statistics
   - aerodynamic roughness length
@@ -25,15 +30,20 @@ keywords:
   - DOWA
   - NEN 8100
   - NPR 6097
+  - CFD
+
 license: MIT
-version: V1.0
-date-released: '2026-10-28'
+
+version: "1.0"
+
+date-released: 2026-10-30
+
 references:
   - type: data
     title: "WiSER-NL Source Dataset"
     authors:
-      - family-names: "Druenen"
+      - given-names: Thijs
         name-particle: van
-        given-names: "Thijs"
-    doi: "10.5281/zenodo.23742938"   
+        family-names: Druenen
+    doi: 10.5281/zenodo.23742938
     year: 2026
