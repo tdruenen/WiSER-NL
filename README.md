@@ -46,10 +46,6 @@ The reference implementation associated with NPR 6097:2027 is:
 
 **WiSER-NL v1.0**
 
-**Software DOI**
-
-https://doi.org/10.xxxx/zenodo.xxxxx
-
 This archived release should be used for reproducible calculations performed in accordance with NPR 6097:2027.
 
 The source code, issue tracker, and development history are available through the GitHub repository:
@@ -245,7 +241,7 @@ See the `LICENSE` file for licensing information.
 
 # Contact
 
-**Eindhoven University of Technology (TU/e)**
+**Eindhoven University of Technology (Technische Universiteit Eindhoven)**
 
 **Author:**  
 Dr.ir. Thijs van Druenen
