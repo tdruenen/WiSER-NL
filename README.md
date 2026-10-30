@@ -83,12 +83,12 @@ For detailed information on the dataset contents, file structure, variables, uni
 
 ## Requirements
 
-WiSER-NL requires:
+WiSER-NL v1.0 was developed and tested with:
 
-- Python 3.11 or newer (recommended);
-- required Python packages listed in `requirements.txt`.
+- Python 3.13
+- the package versions listed in `requirements.txt`
 
-Install all dependencies using:
+Install dependencies using:
 
 ```bash
 pip install -r requirements.txt
