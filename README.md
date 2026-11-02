@@ -1,6 +1,6 @@
 # WiSER-NL
 
-v1.0  <img width="4032" height="107" alt="image" src="https://github.com/user-attachments/assets/42ac745a-b9a2-4df0-a894-83855472fdbc" />
+v1.0  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23879510.svg)](https://doi.org/10.5281/zenodo.23879510)
 
 
 **WiSER-NL** (Wind Statistics and Effective Roughness for the Netherlands) is an open-source software tool for the determination of:
