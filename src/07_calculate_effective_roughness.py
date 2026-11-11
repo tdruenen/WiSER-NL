@@ -9,7 +9,7 @@
 # Copyright (c) 2026 Eindhoven University of Technology
 #
 # Auteur: Thijs van Druenen
-# Versie: 1.0
+# Versie: 0.9
 #
 # Voor informatie over licentie, aansprakelijkheid, disclaimer en
 # gebruiksvoorwaarden wordt verwezen naar:

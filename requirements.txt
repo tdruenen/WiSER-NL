@@ -1,4 +1,4 @@
-# WiSER-NL v1.0
+# WiSER-NL v0.9
 # Tested with Python 3.13
 
 numpy==2.2.3
@@ -10,3 +10,5 @@ rasterio==1.5.0
 xarray==2025.1.2
 netCDF4==1.7.2
 pyarrow==24.0.0
+requests>=2.32
+packaging>=24.0
