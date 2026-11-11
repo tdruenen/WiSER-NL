@@ -93,12 +93,20 @@ def check_latest_version():
 
             return
 
-        latest = response.json()["tag_name"]
+        latest_tag = response.json()["tag_name"]
 
-        if Version(latest) > Version(VERSION):
+        latest_version = Version(
+            latest_tag.lstrip("v")
+        )
+
+        current_version = Version(
+            VERSION
+        )
+
+        if latest_version > current_version:
 
             print(
-                f"\nWAARSCHUWING: WiSER-NL v{latest} is beschikbaar. "
+                f"\nWAARSCHUWING: WiSER-NL {latest_tag} is beschikbaar. "
                 f"U gebruikt momenteel v{VERSION}."
             )
 
