@@ -1,5 +1,6 @@
 # WiSER-NL
 
+v0.9 (version for public review and testing) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24136221.svg)](https://doi.org/10.5281/zenodo.24136221)
 
 
 **WiSER-NL** (Wind Statistics and Effective Roughness for the Netherlands) is an open-source software tool for the determination of:
@@ -34,6 +35,8 @@ This repository contains the source code of WiSER-NL.
 The version currently released for public review and testing is:
 
 **WiSER-NL v0.9**
+
+https://doi.org/10.5281/zenodo.24136221
 
 The final reference version associated with the NPR will be:
 
