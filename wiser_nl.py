@@ -9,7 +9,7 @@
 # Copyright (c) 2026 Eindhoven University of Technology
 #
 # Auteur: Thijs van Druenen
-# Versie: 1.0
+# Versie: 0.9
 #
 # Voor informatie over licentie, aansprakelijkheid, disclaimer en
 # gebruiksvoorwaarden wordt verwezen naar:
@@ -22,9 +22,12 @@ import sys
 import os
 import shutil
 from datetime import datetime
+import requests
+from packaging.version import Version
 
 # ---------------- Settings ---------------- #
 
+VERSION = "0.9"
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC_DIR = os.path.join(BASE_DIR, "src")
 TEMP_DIR = os.path.join(BASE_DIR, "temp")
@@ -65,6 +68,61 @@ def write_log(text):
 
         f.write(text + "\n")
 
+def check_latest_version():
+
+    try:
+
+        response = requests.get(
+            "https://api.github.com/repos/tdruenen/WiSER-NL/releases/latest",
+            timeout=5
+        )
+
+        if response.status_code == 404:
+
+            print(
+                "INFO: Er zijn nog geen officiële GitHub releases gepubliceerd.\n"
+            )
+
+            return
+
+        if response.status_code != 200:
+
+            print(
+                "INFO: Kan nieuwste versie op GitHub niet controleren.\n"
+            )
+
+            return
+
+        latest = response.json()["tag_name"]
+
+        if Version(latest) > Version(VERSION):
+
+            print(
+                f"\nWAARSCHUWING: WiSER-NL v{latest} is beschikbaar. "
+                f"U gebruikt momenteel v{VERSION}."
+            )
+
+            print(
+                "Download via:"
+            )
+
+            print(
+                "https://github.com/tdruenen/WiSER-NL/releases\n"
+            )
+
+        else:
+
+            print(
+                f"INFO: WiSER-NL v{VERSION} is de meest recente release.\n"
+            )
+
+    except Exception:
+
+        print(
+            "INFO: Kan nieuwste versie op GitHub niet controleren.\n"
+        )
+
+
 print(r'''
 =============================================================================
       _       ___     _____ ______ _____        _   _ _
@@ -77,9 +135,11 @@ print(r'''
  Copyright (c) 2026 Eindhoven University of Technology
 
  Auteur: Thijs van Druenen
- Versie: 1.0
+ Versie: 0.9
 =============================================================================
 ''')
+
+check_latest_version()
 
 def save_log_on_failure():
 
