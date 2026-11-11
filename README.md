@@ -10,7 +10,7 @@ v0.9 (version for public review and testing) [![DOI](https://zenodo.org/badge/DO
 - supporting boundary conditions for Computational Fluid Dynamics (CFD) simulations;
 - supporting boundary conditions for wind tunnel studies.
 
-WiSER-NL was developed at Eindhoven University of Technology (TU/e) as part of the NEN 8100 revision working group. The tool supports the determination of wind statistics and effective roughness lengths for wind climate assessments in accordance with NEN 8100:2027.
+WiSER-NL was developed at Eindhoven University of Technology (TU/e) as part of the NEN 8100 revision working group. The tool supports the determination of wind statistics and effective roughness lengths for wind climate assessments in accordance with Ontw. NEN 8100:2026.
 
 ---
 
@@ -161,7 +161,7 @@ Effective roughness lengths are determined from:
 - upstream land-use conditions;
 - distance-weighted roughness analysis.
 
-The implemented methodology follows the procedures described in NPR 6097:2027, which accompanies NEN 8100:2027.
+The implemented methodology follows the procedures described in Ontw. NPR 6097:2026, which accompanies Ontw. NEN 8100:2026.
 
 ---
 
@@ -194,7 +194,7 @@ WiSER-NL-main/
 Additional documentation is provided in:
 
 - `Beschrijving_invoerparameters.txt`
-- NPR 6097:2027
+- Ontw. NPR 6097:2026
 
 ---
 
