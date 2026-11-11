@@ -335,3 +335,5 @@ for _, domain_row in domain_points.iterrows():
         logging.error(
             f"Verwerking van hoek {angle} mislukt: {e}"
         )
+        
+        raise
